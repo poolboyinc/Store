@@ -1,0 +1,37 @@
+section{
+    height: 100vh;
+    background-image: url('/assets/Clothes spread  1.png');
+    background-size: cover;
+}
+
+form {
+    height: 600px;
+    width: 500px;
+    border: 3px solid;
+    border-radius: 3%;
+    border-color: aliceblue;
+    backdrop-filter: blur(13px);
+}
+
+mat-form-field{
+    width: 420px;
+}
+
+.eml-psw {
+    width: 200px;
+    margin-top: 40px;
+}
+
+.redirect{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.sub-btn:hover{
+    background-color: #B4B4B3;
+}
+
+.loginredirect{
+    text-decoration: none;
+    color: #DA0C81;
+}

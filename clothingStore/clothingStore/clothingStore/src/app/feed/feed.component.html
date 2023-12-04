@@ -1,0 +1,35 @@
+<section>
+  <div class="search-prop">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field class="search">
+        <input type="text" matInput placeholder="Search..." name="searchInput" [(ngModel)]="searchTerm" (input)="onSearch(searchTerm, selectedSearchParameter)">
+        <button mat-icon-button class="close-button" *ngIf="isSearching" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-select placeholder="Search by" [(ngModel)]="selectedSearchParameter" name="selectedSearchParameter">
+          <mat-option value="name">Name</mat-option>
+          <mat-option value="price">Price</mat-option>
+          <mat-option value="description">Description</mat-option>
+          <mat-option value="make">Make</mat-option>
+          <mat-option value="size">Size</mat-option>
+        </mat-select>        
+      </mat-form-field>
+    </form>
+  </div>
+  
+  <div class="container" fxLayout="row wrap" fxLayoutGap="20px">
+    <div class="clothingData" *ngFor="let item of filteredClothesData">
+      <mat-card>
+        <mat-card-header><strong>Name: </strong>{{item?.name}}</mat-card-header>
+        <mat-card-header><strong>Price: </strong>{{item?.price}}</mat-card-header>
+        <mat-card-header><strong>Description: </strong>{{item?.description}}</mat-card-header>
+        <mat-card-header><strong>Make: </strong>{{item?.make}}</mat-card-header>
+        <mat-card-header><strong>Size: </strong>{{item?.size}}</mat-card-header>
+        <button class="add" mat-raised-button color="warn" (click)="handleAddToCart(item.clothes_id)">Add</button>
+      </mat-card>
+    </div>
+  </div>
+</section>

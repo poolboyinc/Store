@@ -1,0 +1,18 @@
+<section fxLayoutAlign="center center">
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="30px">
+        <mat-form-field>
+            <input type="email" name="email" matInput placeholder="Type in your email" ngModel name="email" #emailInput="ngModel" required>
+            <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field class="eml-psw">
+            <input name="password" matInput ngModel placeholder="Type in password" [type]="hide ? 'password' : 'text'" #passinput="ngModel" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <button class="sub-btn" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Login</button>
+        
+        <mat-label *ngIf="errorExists">{{errorText}}</mat-label>
+    </form>
+</section>

@@ -1,0 +1,27 @@
+<section>
+    <div class="container" *ngIf="userHistory.length > 0" fxLayoutAlign="center center">
+      <div fxLayout="column" fxLayoutGap="15px">
+        <mat-card *ngFor="let historyItem of userHistory" >
+          <mat-card-header>Purchase History</mat-card-header>
+          <mat-card-content fxLayoutGap="15px">
+            <form>
+              <div fxLayout="row" >
+                <mat-form-field class="item-field" appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput [value]="historyItem.clothes.name" readonly />
+                </mat-form-field>
+  
+                <div class="flex-spacer"></div>
+  
+                <mat-form-field class="item-field" appearance="outline">
+                  <mat-label>Date Purchased</mat-label>
+                  <input matInput [value]="historyItem.purchase_date | date:'medium'" readonly />
+                </mat-form-field>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+  

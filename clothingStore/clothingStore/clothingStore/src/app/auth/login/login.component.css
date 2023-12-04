@@ -1,0 +1,23 @@
+section{
+    height: 100vh;
+    background-image: url('/assets/A lot of jordan 0.png');
+    background-size: cover;
+}
+
+form{
+    border: 3px solid;
+    border-radius: 3%;
+    border-color: #7D7C7C;
+    backdrop-filter: blur(13px);
+    width: 600px;
+    height: 375px;
+}
+
+mat-form-field{
+    width: 550px;
+    height: 100px;
+}
+
+.sub-btn:hover{
+    background-color: #B4B4B3;
+}

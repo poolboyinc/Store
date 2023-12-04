@@ -1,0 +1,28 @@
+<section>
+    <div class="container" *ngIf="userCartItems.length > 0" fxLayoutAlign="center center">
+      <mat-card>
+        <mat-card-header>Cart Items</mat-card-header>
+        <mat-card-content>
+          <form *ngFor="let item of userCartItems">
+            <div fxLayout="row" fxLayoutGap="10px">
+              <mat-form-field class="item-field" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput [value]="item.clothes.name" readonly />
+              </mat-form-field>
+  
+              <mat-form-field class="item-field" appearance="outline">
+                <mat-label>Price</mat-label>
+                <input matInput [value]="item.clothes.price | currency:'USD':'symbol':'1.2-2'" readonly />
+              </mat-form-field>
+
+              <button mat-button color="warn" (click)="onDeleteCartItem(item.cart_id)">Remove</button>
+            </div>
+  
+            
+          </form>
+          <button mat-raised-button color="primary" (click)="onPurchase()">Buy</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+  

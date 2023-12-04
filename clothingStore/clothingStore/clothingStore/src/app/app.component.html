@@ -1,0 +1,50 @@
+
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened="true">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/feed" (click)="sidenav.close()">
+                <mat-icon>checkroom</mat-icon>
+                Feed</a>
+            <a mat-list-item routerLink="/signup" (click)="sidenav.close()">
+                <mat-icon>lock</mat-icon>
+                Sign Up
+            </a>
+            <a mat-list-item routerLink="/login" (click)="sidenav.close()">
+                <mat-icon>lock_open</mat-icon>
+                Login</a>
+
+                <a mat-list-item routerLink="/profile" (click)="sidenav.close()">
+                    <mat-icon>account_circle</mat-icon>
+                    Profile
+                </a>
+                <a mat-list-item routerLink="/cart" (click)="sidenav.close()">
+                    <mat-icon>shopping_cart</mat-icon>
+                    Cart</a>
+                <a mat-list-item routerLink="/history" (click)="sidenav.close()">
+                    <mat-icon>history</mat-icon>
+                    Purchase History</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <mat-toolbar color="primary">
+            <div>
+                <button (click)="sidenav.toggle()" mat-icon-button class="example-icon">
+                    <mat-icon>menu</mat-icon>
+                  </button>
+            </div>
+            <div fxFlex fxLayoutAlign="end" fxLayoutGap="15px" fxHide.xs>
+                <a routerLink="/signup">Sign Up</a>
+                <a routerLink="/login">Login</a>
+                <a routerLink="/profile">Profile</a>
+            </div>
+        </mat-toolbar>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+

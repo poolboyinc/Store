@@ -1,0 +1,49 @@
+<section fxLayoutAlign="center center">
+    <form fxLayout="column" fxLayoutAlign="start center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="20px">
+        <div  fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field class="eml-psw">
+                <input type="email" name="email" matInput placeholder="Type in your email" ngModel name="email" #emailInput="ngModel" required>
+                <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty</mat-error>
+            </mat-form-field>
+            <mat-form-field class="eml-psw">
+                <input name="password" matInput ngModel placeholder="Type in password" [type]="hide ? 'password' : 'text'"  minlength="10" #passinput="ngModel" required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-hint align="end">{{ passinput.value?.length }} / 10</mat-hint>
+            </mat-form-field>
+        </div>
+        <mat-form-field>
+            <mat-select [(ngModel)]="style" name="style">
+                <mat-option value="urban">Urban</mat-option>
+                <mat-option value="plain">Plain</mat-option>
+                <mat-option value="cosplay">Cosplay</mat-option>
+                <mat-option value="streetwear">Streetwear</mat-option>
+                <mat-option value="mainstream">Mainstream</mat-option>
+              </mat-select>
+              <mat-label>What is your type of fashion?</mat-label>
+        </mat-form-field>
+        <mat-form-field>
+            <input 
+                matInput 
+                placeholder="Date of birth" 
+                [matDatepicker]="picker" 
+                ngModel 
+                name="date" 
+                required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="tel" matInput placeholder="Type in your phone number" name="phone_number" ngModel #numberInput="ngModel" required>
+            <mat-hint>Don't forget the area code</mat-hint>
+        </mat-form-field>
+
+        <mat-label class="redirect">If you already have an account go to the <a class="loginredirect" routerLink="/login">login</a> page</mat-label>
+
+        <button class="sub-btn" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Sign Up</button>
+
+        <mat-label *ngIf="errorExists">{{errorText}}</mat-label>
+    </form>
+</section>
+

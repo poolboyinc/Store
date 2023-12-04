@@ -1,0 +1,91 @@
+<section fxLayoutAlign="center center">
+    <form fxLayoutAlign="center center" fxLayout="column" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="1.5vw">
+        <mat-card>
+            <div>
+                
+                <div *ngIf="!this.isEditing">
+                    <mat-icon>mail</mat-icon>
+                    <span>{{ user?.email }}</span>
+                    
+                </div>
+
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="email" name="email" matInput placeholder="Type in your email" ngModel name="email" #emailInput="ngModel" required>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <mat-card>
+            <div>
+
+                <div *ngIf="!this.isEditing">
+                    <mat-icon>password</mat-icon>
+                    <span>{{user?.password}}</span>
+                </div>
+                <mat-form-field class="eml-psw" *ngIf="this.isEditing">
+                    <input name="password" matInput ngModel placeholder="Type in password" [type]="hide ? 'password' : 'text'"  minlength="10" #passinput="ngModel" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-hint align="end">{{ passinput.value?.length }} / 10</mat-hint>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <mat-card>
+            <div>
+                
+                <div *ngIf="!this.isEditing">
+                    <mat-icon>person_4</mat-icon>
+                    <span>{{ user?.style }}</span>
+                    
+                </div>
+
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="text" matInput placeholder="Type in your style" ngModel name="style" #user_styleInput="ngModel" required>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <mat-card>
+            <div>
+
+                <div *ngIf="!this.isEditing">
+                    <mat-icon>calendar_month</mat-icon>
+                    <span>{{ user?.date | date:'mediumDate' }}</span>
+                </div>
+
+                <mat-form-field *ngIf="this.isEditing">
+                    <input 
+                        matInput 
+                        placeholder="Date of birth" 
+                        [matDatepicker]="picker" 
+                        ngModel 
+                        name="date" 
+                        required
+                        >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <mat-card>
+            
+            <div>
+                
+                <div *ngIf="!this.isEditing">
+                    <mat-icon>call</mat-icon>
+                    <span>{{ user?.phone_number }}</span>
+                    
+                </div>
+
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="tel" matInput placeholder="Type in your phone number" name="phone_number" ngModel #numberInput="ngModel" required>
+                </mat-form-field>
+            </div>
+
+        </mat-card>
+        <button mat-icon-button (click)="enableEdit()">
+            <mat-icon class="edit_prop">edit</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" *ngIf="this.isEditing" type="submit">Save configuration</button>
+        <mat-error *ngIf="errorExists">{{errorText}}</mat-error>
+    </form>
+</section>

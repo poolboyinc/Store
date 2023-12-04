@@ -1,0 +1,11 @@
+mat-card {
+    height: 600px;
+    width: 475px;
+    backdrop-filter: blur(7px);
+    border: 3px solid;
+    border-radius: 3%;
+}
+
+mat-card-header {
+    margin-bottom: 25px;
+}
